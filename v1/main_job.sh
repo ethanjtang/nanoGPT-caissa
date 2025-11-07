@@ -2,9 +2,9 @@
 #SBATCH -p general ## Partition
 #SBATCH -q public  ## QOS
 #SBATCH -N 1      ## Number of Sol Nodes
-#SBATCH -c 8     ## Number of Cores
-#SBATCH --mem=16G  ## Memory (GB)
-#SBATCH --time=5  ## Minutes of compute
+#SBATCH -c 16     ## Number of Cores
+#SBATCH --mem=64G  ## Memory (GB)
+#SBATCH --time=60  ## Minutes of compute
 #SBATCH -G 1        ## Number of GPUs
 #SBATCH --job-name=mini-caissa-test
 #SBATCH --output=slurm.%j.out  ## job /dev/stdout record (%j expands -> jobid)
@@ -31,7 +31,7 @@ echo "Installing Python stuffs"
 pip install torch numpy transformers datasets tiktoken wandb tqdm
 
 # Check if model already exists
-if [ -f "out-annotated-games/ckpt.pt" ]; then
+if [ -f "output/ckpt.pt" ]; then
     echo "=========================================="
     echo "Found existing trained model, skipping training"
     echo "=========================================="
@@ -42,11 +42,11 @@ else
 
     # Prepare training data
     echo "Preparing training data"
-    python data/annotated-games/prepare.py
+    python data/chess-data/prepare.py
 
     # Train LLM
     echo "Training LLM on data"
-    python train.py config/train_caissa.py
+    python train.py config.py
 fi
 
 # Sample from LLM
@@ -54,9 +54,9 @@ echo "=========================================="
 echo "Sampling from trained model"
 echo "=========================================="
 echo "Test sample LLM without prompt"
-python sample.py --out_dir=out-annotated-games
+python sample.py --out_dir=output
 
 echo "Test sample LLM with prompt"
-python sample.py --start="FILE:./prompts/pgn_fen_single_test.txt" --out_dir=out-annotated-games
+python sample.py --start="FILE:./prompts/prompt.txt" --out_dir=output
 
 
