@@ -22,7 +22,10 @@ source activate caissa-env
 
 # Install dependencies
 echo "Installing mamba stuffs"
-mamba install torch
+if ! mamba env list | grep -q "caissa-env"; then
+    echo "Creating new mamba environment caissa-env"
+    mamba create -y -n caissa-env python=3.10
+fi
 
 echo "Installing Python stuffs"
 pip install torch numpy transformers datasets tiktoken wandb tqdm
