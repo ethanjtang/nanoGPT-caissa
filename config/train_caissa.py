@@ -10,7 +10,7 @@ log_interval = 1 # don't print too too often
 always_save_checkpoint = False
 
 wandb_log = False # override via command line if you like
-wandb_project = '5-annotated-game-sample'
+wandb_project = 'annotated-game-sample'
 wandb_run_name = 'mini-caissa'
 
 dataset = 'annotated-games'
