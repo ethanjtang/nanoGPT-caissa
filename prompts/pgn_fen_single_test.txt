@@ -1,0 +1,3 @@
+PGN: 1. d4 Nf6 2. Nc3 d5 3. Bf4 Nc6
+FEN: r1bqkb1r/ppp1pppp/2n2n2/3p4/3P1B2/2N5/PPP1PPPP/R2QKBNR w KQkq - 2 4
+Find the best move in this position for White.
