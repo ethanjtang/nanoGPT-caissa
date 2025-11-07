@@ -50,7 +50,7 @@ else
 
     # Train LLM
     echo "Training LLM on data"
-    python train.py --config_file=config.py
+    python train.py config.py
 fi
 
 # Sample from LLM
