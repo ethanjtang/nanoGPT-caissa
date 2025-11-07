@@ -39,7 +39,10 @@ echo "Training LLM on data"
 python train.py config/train_caissa.py
 
 # Sample from LLM
+echo "Test sample LLM without prompt"
 python sample.py --out_dir=out-annotated-games
 
+echo "Test sample LLM with prompt"
+python sample.py --start="FILE:./prompts/pgn_fen_single_test.txt" --out_dir=out-annotated-games
 
 
