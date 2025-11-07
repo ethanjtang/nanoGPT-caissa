@@ -1,2 +1,0 @@
-FEN: k2r4/1pQ1R3/p4q2/8/2P1K3/4N3/8/8 b - - 1 56
-Best move:
