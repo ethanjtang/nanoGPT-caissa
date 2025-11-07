@@ -30,15 +30,29 @@ fi
 echo "Installing Python stuffs"
 pip install torch numpy transformers datasets tiktoken wandb tqdm
 
-# Prepare training data
-echo "Preparing training data"
-python data/annotated-games/prepare.py
+# Check if model already exists
+if [ -f "out-annotated-games/ckpt.pt" ]; then
+    echo "=========================================="
+    echo "Found existing trained model, skipping training"
+    echo "=========================================="
+else
+    echo "=========================================="
+    echo "No existing model found, starting training"
+    echo "=========================================="
 
-# Train LLM
-echo "Training LLM on data"
-python train.py config/train_caissa.py
+    # Prepare training data
+    echo "Preparing training data"
+    python data/annotated-games/prepare.py
+
+    # Train LLM
+    echo "Training LLM on data"
+    python train.py config/train_caissa.py
+fi
 
 # Sample from LLM
+echo "=========================================="
+echo "Sampling from trained model"
+echo "=========================================="
 echo "Test sample LLM without prompt"
 python sample.py --out_dir=out-annotated-games
 
