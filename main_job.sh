@@ -4,7 +4,7 @@
 #SBATCH -N 1      ## Number of Sol Nodes
 #SBATCH -c 16     ## Number of Cores
 #SBATCH --mem=64G  ## Memory (GB)
-#SBATCH --time=10  ## Minutes of compute
+#SBATCH --time=1440  ## Minutes of compute
 #SBATCH -G 1        ## Number of GPUs
 #SBATCH --job-name=mini-caissa-test
 #SBATCH --output=slurm.%j.out  ## job /dev/stdout record (%j expands -> jobid)
