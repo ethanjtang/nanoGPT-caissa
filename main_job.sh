@@ -40,9 +40,13 @@ else
     echo "No existing model found, starting training"
     echo "=========================================="
 
-    # Prepare training data
-    echo "Preparing training data"
-    python data/chess-data/prepare.py
+    # Prepare training data (only if not already prepared)
+    if [ -f "data/chess-data/train.bin" ] && [ -f "data/chess-data/val.bin" ]; then
+        echo "Training data already exists, skipping preparation"
+    else
+        echo "Preparing training data"
+        python data/chess-data/prepare.py
+    fi
 
     # Train LLM
     echo "Training LLM on data"
