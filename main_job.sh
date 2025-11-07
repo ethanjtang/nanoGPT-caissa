@@ -3,8 +3,8 @@
 #SBATCH -q public  ## QOS
 #SBATCH -N 1      ## Number of Sol Nodes
 #SBATCH -c 8     ## Number of Cores
-#SBATCH --mem=32G  ## Memory (GB)
-#SBATCH --time=10  ## Minutes of compute
+#SBATCH --mem=16G  ## Memory (GB)
+#SBATCH --time=5  ## Minutes of compute
 #SBATCH -G 1        ## Number of GPUs
 #SBATCH --job-name=ood-example-python
 #SBATCH --output=slurm.%j.out  ## job /dev/stdout record (%j expands -> jobid)
