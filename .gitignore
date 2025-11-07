@@ -10,5 +10,3 @@ __pycache__/
 input.txt
 env/
 venv/
-*.txt
-*.pth
